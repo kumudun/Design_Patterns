@@ -14,6 +14,9 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javafx.version>21.0.2</javafx.version>
+
+        <!-- default app -->
+        <javafx.mainClass>Flyweight.Game</javafx.mainClass>
     </properties>
 
     <dependencies>
@@ -46,10 +49,26 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>memento.MementoApp</mainClass>
+                    <mainClass>${javafx.mainClass}</mainClass>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>flyweight</id>
+            <properties>
+                <javafx.mainClass>Flyweight.Game</javafx.mainClass>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>memento</id>
+            <properties>
+                <javafx.mainClass>memento.MementoApp</javafx.mainClass>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
